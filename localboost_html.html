@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LocalBoost | Marketing para Negocios Locales</title>
+  <meta name="description" content="Agencia de marketing digital especializada en negocios locales. Redes sociales, Google Ads, SEO local y diseño de contenido." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --orange: #ff6b2b;
+      --orange-light: rgba(255,107,43,0.12);
+      --dark: #0f0f0f;
+      --dark2: #1a1a1a;
+      --gray: #aaaaaa;
+      --border: rgba(255,255,255,0.08);
+      --white: #ffffff;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: #fff; color: #111; }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 2rem;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid #eee;
+    }
+    .nav-logo { font-size: 1.1rem; font-weight: 600; color: #111; text-decoration: none; }
+    .nav-logo span { color: var(--orange); }
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+    .nav-links a { font-size: 0.9rem; color: #555; text-decoration: none; transition: color .2s; }
+    .nav-links a:hover { color: var(--orange); }
+    .nav-cta {
+      background: var(--orange); color: #fff; border: none;
+      border-radius: 999px; padding: 9px 20px; font-size: 0.85rem;
+      font-weight: 500; cursor: pointer; transition: opacity .2s; text-decoration: none;
+    }
+    .nav-cta:hover { opacity: .85; }
+    .hamburger { display: none; background: none; border: none; cursor: pointer; font-size: 1.4rem; color: #111; }
+
+    /* HERO */
+    .hero {
+      background: var(--dark); color: var(--white);
+      padding: 6rem 2rem 5rem; text-align: center;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,107,43,0.15); color: var(--orange);
+      border: 1px solid rgba(255,107,43,0.3);
+      border-radius: 999px; font-size: 0.75rem; padding: 5px 16px;
+      margin-bottom: 1.5rem; letter-spacing: 0.06em; text-transform: uppercase;
+    }
+    .hero h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 600; line-height: 1.15; max-width: 600px; margin: 0 auto 1.2rem; }
+    .hero h1 span { color: var(--orange); }
+    .hero p { font-size: 1.05rem; color: var(--gray); max-width: 480px; margin: 0 auto 2.2rem; line-height: 1.7; }
+    .hero-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--orange); color: #fff; border: none;
+      border-radius: 999px; padding: 14px 32px; font-size: 0.95rem;
+      font-weight: 500; cursor: pointer; transition: opacity .2s; text-decoration: none;
+    }
+    .btn-primary:hover { opacity: .85; }
+    .btn-outline {
+      background: transparent; color: #fff;
+      border: 1px solid #444; border-radius: 999px;
+      padding: 14px 28px; font-size: 0.95rem; cursor: pointer;
+      transition: border-color .2s, color .2s; text-decoration: none;
+    }
+    .btn-outline:hover { border-color: var(--orange); color: var(--orange); }
+
+    /* STATS */
+    .stats {
+      display: flex; justify-content: center; flex-wrap: wrap; gap: 2rem;
+      padding: 3rem 2rem; border-bottom: 1px solid #eee;
+    }
+    .stat { text-align: center; }
+    .stat strong { display: block; font-size: 2rem; font-weight: 600; color: var(--orange); }
+    .stat span { font-size: 0.85rem; color: #777; }
+
+    /* SECTIONS */
+    section { padding: 4rem 2rem; max-width: 1100px; margin: 0 auto; }
+    .section-label { font-size: 0.75rem; color: var(--orange); letter-spacing: .1em; text-align: center; margin-bottom: .5rem; text-transform: uppercase; }
+    .section-title { font-size: clamp(1.4rem, 3vw, 1.8rem); font-weight: 600; text-align: center; margin-bottom: .6rem; }
+    .section-sub { font-size: 1rem; color: #666; text-align: center; max-width: 500px; margin: 0 auto 2.5rem; line-height: 1.7; }
+
+    /* SERVICES */
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+    .service-card {
+      border: 1px solid #eee; border-radius: 16px; padding: 1.5rem 1.3rem;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .service-card:hover { border-color: var(--orange); box-shadow: 0 4px 20px rgba(255,107,43,0.1); }
+    .service-icon {
+      width: 44px; height: 44px; border-radius: 10px;
+      background: var(--orange-light); display: flex; align-items: center;
+      justify-content: center; margin-bottom: 1rem; font-size: 1.3rem;
+    }
+    .service-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: .4rem; }
+    .service-card p { font-size: 0.875rem; color: #666; line-height: 1.6; }
+
+    /* WHY */
+    .why-section { background: #f9f9f9; padding: 4rem 2rem; }
+    .why-inner { max-width: 1100px; margin: 0 auto; }
+    .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+    .why-card { background: #fff; border-radius: 16px; padding: 1.5rem; border: 1px solid #eee; }
+    .why-num { font-size: 2.2rem; font-weight: 600; color: var(--orange); line-height: 1; margin-bottom: .5rem; }
+    .why-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: .4rem; }
+    .why-card p { font-size: 0.875rem; color: #666; line-height: 1.6; }
+
+    /* TESTIMONIALS */
+    .testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+    .testi-card { border: 1px solid #eee; border-radius: 16px; padding: 1.5rem; }
+    .stars { color: var(--orange); font-size: 0.9rem; margin-bottom: .7rem; }
+    .testi-card p { font-size: 0.9rem; color: #444; line-height: 1.65; margin-bottom: 1.2rem; font-style: italic; }
+    .testi-author { display: flex; align-items: center; gap: 10px; }
+    .avatar {
+      width: 38px; height: 38px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.75rem; font-weight: 600; flex-shrink: 0;
+    }
+    .testi-name { font-size: 0.875rem; font-weight: 600; }
+    .testi-biz { font-size: 0.75rem; color: #888; }
+
+    /* CTA SECTION */
+    .cta-section {
+      background: var(--dark); border-radius: 20px;
+      padding: 4rem 2rem; text-align: center;
+      margin: 2rem auto; max-width: 1100px;
+    }
+    .cta-section h2 { font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 600; color: #fff; margin-bottom: .7rem; }
+    .cta-section h2 span { color: var(--orange); }
+    .cta-section p { color: var(--gray); font-size: 1rem; margin-bottom: 2rem; line-height: 1.7; }
+    .contact-form { display: flex; gap: 10px; max-width: 440px; margin: 0 auto; flex-wrap: wrap; justify-content: center; }
+    .contact-form input {
+      flex: 1; min-width: 200px; padding: 13px 18px; border-radius: 999px;
+      border: 1px solid #333; background: #1a1a1a; color: #fff;
+      font-size: 0.9rem; outline: none; font-family: inherit;
+    }
+    .contact-form input::placeholder { color: #666; }
+    .contact-form input:focus { border-color: var(--orange); }
+    .form-note { font-size: 0.75rem; color: #666; margin-top: .8rem; }
+    #form-success { display: none; color: #4ade80; font-size: 0.95rem; margin-top: 1rem; }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid #eee; padding: 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1rem; max-width: 1100px; margin: 0 auto;
+    }
+    .footer-logo { font-size: 1rem; font-weight: 600; color: #111; }
+    .footer-logo span { color: var(--orange); }
+    .footer-links { display: flex; gap: 1.2rem; }
+    .footer-links a { font-size: 0.8rem; color: #777; text-decoration: none; transition: color .2s; }
+    .footer-links a:hover { color: var(--orange); }
+    .footer-social { display: flex; gap: 10px; }
+    .social-btn {
+      width: 34px; height: 34px; border: 1px solid #ddd; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      color: #555; text-decoration: none; font-size: 0.9rem;
+      transition: border-color .2s, color .2s;
+    }
+    .social-btn:hover { border-color: var(--orange); color: var(--orange); }
+    .footer-copy { width: 100%; text-align: center; font-size: 0.75rem; color: #aaa; padding-top: .5rem; border-top: 1px solid #eee; margin-top: .5rem; }
+
+    /* MOBILE */
+    @media (max-width: 640px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: block; }
+      .nav-links.open {
+        display: flex; flex-direction: column; position: absolute;
+        top: 60px; left: 0; right: 0; background: #fff;
+        padding: 1rem 2rem; border-bottom: 1px solid #eee; z-index: 99;
+      }
+      footer { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Local<span>Boost</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#resultados">Resultados</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <a href="#contacto" class="nav-cta">Empezar ahora</a>
+  <button class="hamburger" id="hamburger" aria-label="Menú">&#9776;</button>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">Especialistas en negocios locales</div>
+  <h1>Más clientes para tu <span>negocio local</span></h1>
+  <p>Hacemos crecer tu presencia digital con estrategias de marketing enfocadas en resultados reales y clientes locales.</p>
+  <div class="hero-btns">
+    <a href="#contacto" class="btn-primary">Quiero más clientes</a>
+    <a href="#resultados" class="btn-outline">Ver resultados</a>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat"><strong>+150</strong><span>Negocios locales atendidos</span></div>
+  <div class="stat"><strong>3x</strong><span>Promedio de crecimiento en clientes</span></div>
+  <div class="stat"><strong>98%</strong><span>Clientes satisfechos</span></div>
+  <div class="stat"><strong>5 años</strong><span>De experiencia en marketing local</span></div>
+</div>
+
+<!-- SERVICES -->
+<section id="servicios">
+  <p class="section-label">Lo que hacemos</p>
+  <h2 class="section-title">Servicios que generan resultados</h2>
+  <p class="section-sub">Todo lo que necesita tu negocio para dominar tu zona y atraer más clientes cada día.</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">📱</div>
+      <h3>Redes sociales</h3>
+      <p>Contenido que conecta con tu comunidad local y aumenta tu visibilidad de forma orgánica.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🎯</div>
+      <h3>Google Ads</h3>
+      <p>Anuncios dirigidos a personas que buscan exactamente lo que ofreces en tu ciudad.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🔍</div>
+      <h3>SEO local</h3>
+      <p>Aparece en los primeros resultados cuando alguien busca tu tipo de negocio cerca de ti.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🎨</div>
+      <h3>Diseño de contenido</h3>
+      <p>Imágenes y videos profesionales que destacan tu marca y atraen más clientes.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<div class="why-section" id="resultados">
+  <div class="why-inner">
+    <p class="section-label">¿Por qué nosotros?</p>
+    <h2 class="section-title">La diferencia LocalBoost</h2>
+    <p class="section-sub">No somos una agencia genérica. Nos especializamos en hacer crecer negocios locales como el tuyo.</p>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-num">01</div>
+        <h3>Resultados medibles</h3>
+        <p>Reportes claros cada mes para que veas exactamente cómo crece tu negocio.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-num">02</div>
+        <h3>Atención personalizada</h3>
+        <p>Un equipo dedicado a tu negocio. No eres un número más en nuestra lista de clientes.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-num">03</div>
+        <h3>Expertos en lo local</h3>
+        <p>Entendemos tu mercado, tus clientes y cómo llegar a ellos de manera efectiva.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section>
+  <p class="section-label">Testimonios</p>
+  <h2 class="section-title">Lo que dicen nuestros clientes</h2>
+  <p class="section-sub">Negocios locales que ya confían en LocalBoost para crecer mes a mes.</p>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p>"En tres meses duplicamos las reservaciones en el restaurante. El equipo entiende perfectamente lo que necesitamos."</p>
+      <div class="testi-author">
+        <div class="avatar" style="background:#fff3ee;color:#ff6b2b;">MG</div>
+        <div>
+          <div class="testi-name">Miguel García</div>
+          <div class="testi-biz">Restaurante El Rincón</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p>"Por fin aparezco en Google cuando alguien busca mi servicio en la ciudad. Vale cada peso invertido."</p>
+      <div class="testi-author">
+        <div class="avatar" style="background:#eef3ff;color:#4f6ef7;">AL</div>
+        <div>
+          <div class="testi-name">Ana López</div>
+          <div class="testi-biz">Estética Ana Style</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p>"Mis ventas crecieron 40% en el primer mes. Los anuncios de Google llegaron exactamente a mis clientes ideales."</p>
+      <div class="testi-author">
+        <div class="avatar" style="background:#efffee;color:#22a04a;">CR</div>
+        <div>
+          <div class="testi-name">Carlos Ruiz</div>
+          <div class="testi-biz">Ferretería El Maestro</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-section" id="contacto">
+  <h2>¿Listo para <span>más clientes</span>?</h2>
+  <p>Agenda una llamada gratuita y descubre cómo podemos hacer crecer tu negocio este mes.</p>
+  <form class="contact-form" id="contactForm">
+    <input type="email" id="emailInput" placeholder="Tu correo electrónico" required />
+    <button type="submit" class="btn-primary">Agendar llamada</button>
+  </form>
+  <p class="form-note">Sin compromisos. Respuesta en menos de 24 horas.</p>
+  <p id="form-success">✅ ¡Gracias! Te contactaremos pronto.</p>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Local<span>Boost</span></div>
+  <div class="footer-links">
+    <a href="#servicios">Servicios</a>
+    <a href="#resultados">Resultados</a>
+    <a href="#contacto">Contacto</a>
+  </div>
+  <div class="footer-social">
+    <a href="#" class="social-btn" aria-label="Instagram">📷</a>
+    <a href="#" class="social-btn" aria-label="Facebook">📘</a>
+    <a href="#" class="social-btn" aria-label="TikTok">🎵</a>
+  </div>
+  <div class="footer-copy">© 2026 LocalBoost. Todos los derechos reservados.</div>
+</footer>
+
+<script>
+  // Hamburger menu
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+
+  // Form submit
+  const form = document.getElementById('contactForm');
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const email = document.getElementById('emailInput').value;
+    if (email) {
+      form.style.display = 'none';
+      document.getElementById('form-success').style.display = 'block';
+    }
+  });
+
+  // Smooth close mobile menu on link click
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => navLinks.classList.remove('open'));
+  });
+</script>
+</body>
+</html>
